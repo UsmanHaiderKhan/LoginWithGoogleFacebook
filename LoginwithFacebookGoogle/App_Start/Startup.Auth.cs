@@ -1,11 +1,11 @@
-﻿using System;
+﻿using LoginwithFacebookGoogle.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using LoginwithFacebookGoogle.Models;
+using System;
 
 namespace LoginwithFacebookGoogle
 {
@@ -34,7 +34,7 @@ namespace LoginwithFacebookGoogle
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
@@ -54,15 +54,15 @@ namespace LoginwithFacebookGoogle
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "1215828878580479",
+               appSecret: "1e5f098d955b91464603509103e0f4c6");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "886691047074-3ct0b57k19fgrnpheudqvvdoeamsqr3h.apps.googleusercontent.com",
+                ClientSecret = "GT1qPgPTCb-XppmfDUSBf0ta"
+            });
         }
     }
 }
